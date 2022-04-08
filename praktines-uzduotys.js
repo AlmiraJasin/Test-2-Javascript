@@ -58,22 +58,21 @@ Surasti didžiausią masyvo reikšmę, NENAUDOJANT sort() bei Math.max() funkcij
 */
 console.log('6.-----------');
 
- 
-    let largestNumber = 0
-    let arr = [];
-    for (let i = 0; i < 30; i++) {
-        let randomArrValues = rand(10, 30);
-        arr.push(randomArrValues);
-    }
+
+let largestNumber = 0
+const arr = [];
+const maxLength = rand(20, 30)
+for (let i = 0; i < maxLength; i++) {
+    let randomArrValues = rand(10, 30);
+    arr.push(randomArrValues);
+}
 
 console.log(arr);
 
- function largestNumberInArr(array) {  
-    for (let iArr = 0; iArr < arr.length; iArr++) {
-        for (let iSubArr = 0; iSubArr < arr[iArr]; iSubArr++) {
-            if (arr[iArr][iSubArr] > largestNumber[iArr]) {
-                largestNumber[iArr] =  arr[iArr][iSubArr];
-            }
+function largestNumberInArr(array) {  
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] > largestNumber) {
+            largestNumber = array[i];
         }
     }
     return largestNumber;
@@ -81,14 +80,43 @@ console.log(arr);
 
 console.log(largestNumberInArr(arr));
 
-
-
-
 /* 7. Sugeneruokite masyvą, kurio reikšmės atsitiktinės raidės A, B, C ir D, o ilgis 100. 
 Suskaičiuokite kiek yra kiekvienos raidės. (7 taškai)
 */
 console.log('7.-----------');
 
+// Sugeneruoti masyva:
+    // 1 sukurti mini masyva [A, B, C, D]
+    // 2 Priskirti masyvo reiksmems numeri    
+    // 3 Padaryti length 100
+    // 4 Priskirti numeriams random funkcija
+
+const arrayValues = ['A', 'B', 'C', 'D'];
+const letterArray = [];
+const arrayItems = 100;
+for (let i = 0; i < arrayItems; i++) {
+    let itemNumber = rand(0, arrayValues.length - 1)
+    letterArray.push(arrayValues[itemNumber]);
+}
+    
+console.log(letterArray);
+
+// Rasti kiek yra kiekvienos raidės
+    // 5 Priskirti kiekvienai raidei kaupikli
+    // 6 Palyginti kaupiklio reiksme su raide
+
+let kaupiklis = new Array(arrayValues.length).fill(0);
+for (let n = 0; n < letterArray.length; n++) {
+    for (let i = 0; i < arrayValues.length; i++) {
+     if (letterArray[n] === arrayValues[i]) {
+        kaupiklis[i] += 1;
+        break;
+      }
+    } 
+// console.log(`${arrayValues[i]} raide masyve kartojama $n kartu`);   
+}
+// 
+console.log(kaupiklis)
 
 
 /* 8. Parašyti funkciją - lygineSuma. Funkcijos parametrai - du kintamieji. 
